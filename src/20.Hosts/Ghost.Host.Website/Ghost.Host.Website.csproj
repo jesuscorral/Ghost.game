@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\50.Data\Ghost.Data\Ghost.Data.csproj" />
+    <ProjectReference Include="..\Ghost.Host.Mvc\Ghost.Host.Mvc.csproj" />
   </ItemGroup>
 
 </Project>
