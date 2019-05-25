@@ -4,14 +4,16 @@ using Ghost.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ghost.Data.Migrations
 {
     [DbContext(typeof(GhostDataContext))]
-    partial class GhostDataContextModelSnapshot : ModelSnapshot
+    [Migration("20190525102320_setAutoId")]
+    partial class setAutoId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

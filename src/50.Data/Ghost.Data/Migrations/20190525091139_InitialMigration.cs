@@ -11,8 +11,8 @@ namespace Ghost.Data.Migrations
                 name: "Words",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    WordValue = table.Column<string>(nullable: true)
+                    Id = table.Column<Guid>(nullable: false, defaultValueSql: "newid()"),
+                    WordValue = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
