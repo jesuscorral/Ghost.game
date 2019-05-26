@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Ghost.Business;
+using Ghost.Business.Interface;
 using Ghost.Data;
 using Ghost.Data.Interface;
 using Ghost.Host.Mvc.Configurations;
@@ -37,6 +39,7 @@ namespace Ghost.Host.Website
             // Binding service and repository interface to the respective classes
             services.AddScoped<IGhostService, GhostService>();
             services.AddScoped<IGhostRepository, GhostRepository>();
+            services.AddScoped<ICheckWord, CheckWord>();
 
             // AutoMapper
             services.AddAutoMapper();

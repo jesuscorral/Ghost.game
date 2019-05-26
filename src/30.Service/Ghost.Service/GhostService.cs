@@ -1,30 +1,30 @@
 ﻿using AutoMapper;
+using Ghost.Business.Interface;
+using Ghost.Business.Interface.Dto;
 using Ghost.Core.Exceptions;
-using Ghost.Data.Interface;
-using Ghost.Model.Ghost;
 using Ghost.Service.Interface;
-using Ghost.Service.Interface.Dto;
 using Ghost.Service.Interface.Request;
 using Ghost.Service.Interface.Response;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
+using static Ghost.Service.Interface.Enums.Enum;
 
 namespace Ghost.Service
 {
     public class GhostService : BaseService, IGhostService
     {
-        private readonly IGhostRepository ghostRepository;
         private readonly IMapper mapper;
+        private readonly IServiceProvider serviceProvider;
 
         public GhostService(
             ILogger<GhostService> logger,
-            IGhostRepository ghostRepository,
+            IServiceProvider serviceProvider,
             IMapper mapper)
             : base(logger)
         {
-            this.ghostRepository = ghostRepository;
             this.mapper = mapper;
+            this.serviceProvider = serviceProvider;
         }
 
         public async Task<CheckWordResponse> CheckWordAsync(CheckWordRequest request)
@@ -34,29 +34,37 @@ namespace Ghost.Service
                 throw new NullRequestException<CheckWordRequest>();
             }
 
-            var t = await this.ghostRepository.GetWordsAsync();
+            var response = new CheckWordResponse();
 
-            var response = new CheckWordResponse
+            var transaction = (ICheckWord)this.serviceProvider.GetService(typeof(ICheckWord));
+            if (transaction == null)
             {
-                // Map Word class from model to WordDto 
-                Words = this.mapper.Map<IEnumerable<Word>, IEnumerable<WordDto>>(t)
-            };
+                this.Logger.LogError("Transaction {0} not found", typeof(ICheckWord));
+                throw new TransactionNotFoundException(typeof(ICheckWord));
+            }
 
-            //var transaction = this.TransactionManager.CreateTransaction<ICheckWord>(t =>
-            //{
-            //    //t.Capacity = this.capacityConverter.ToCapacity(request);
-            //    //t.PartyId = request.PartyId;
-            //});
+            transaction.StartingWord = GetStartingWord(request);
+            transaction.Round = request.Round;
+            transaction.Turn = request.Turn;
 
-           
-            //if (await this.TransactionManager.ExecuteAsync(transaction))
-            //{
-            //    //response.Data = this.capacityConverter.ToCapacityDTO(transaction.Capacity);
-            //}
-
-            //response.Errors = transaction.ValidationResults;
+            if (await transaction.ExecuteAsync())
+            {
+                response = this.mapper.Map<CheckWordDto, CheckWordResponse>(transaction.Response);
+            }
 
             return response;
         }
-}
+
+        /// <summary>
+        /// Return the starting word depending on who is playing in the current round
+        /// </summary>
+        /// <param name="request">Request with the value of the current word and the letter typed</param>
+        /// <returns>Starting word</returns>
+        private string GetStartingWord(CheckWordRequest request)
+        {
+            return request.Turn == Player.Computer ?
+                                    string.Concat(request.ComputedWord, request.LetterTyped) :
+                                    string.Concat(request.HumanWord, request.LetterTyped);
+        }
+    }
 }

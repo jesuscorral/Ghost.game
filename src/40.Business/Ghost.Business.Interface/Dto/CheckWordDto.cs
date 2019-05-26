@@ -1,9 +1,11 @@
 ﻿using static Ghost.Service.Interface.Enums.Enum;
 
-namespace Ghost.Service.Interface.Response
+namespace Ghost.Business.Interface.Dto
 {
-    public class CheckWordResponse
+    public class CheckWordDto
     {
+        public string StartingWord { get; set; }
+
         public Player Winner { get; set; }
 
         public Player Turn { get; set; }

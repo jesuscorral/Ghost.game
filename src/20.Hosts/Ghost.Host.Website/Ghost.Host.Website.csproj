@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\40.Business\Ghost.Business\Ghost.Business.csproj" />
     <ProjectReference Include="..\..\50.Data\Ghost.Data\Ghost.Data.csproj" />
     <ProjectReference Include="..\Ghost.Host.Mvc\Ghost.Host.Mvc.csproj" />
   </ItemGroup>

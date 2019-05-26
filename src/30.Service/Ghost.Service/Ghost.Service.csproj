@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\40.Business\Ghost.Business.Interface\Ghost.Business.Interface.csproj" />
     <ProjectReference Include="..\..\50.Data\Ghost.Core\Ghost.Core.csproj" />
     <ProjectReference Include="..\..\50.Data\Ghost.Data.Interface\Ghost.Data.Interface.csproj" />
     <ProjectReference Include="..\Ghost.Service.Interface\Ghost.Service.Interface.csproj" />
