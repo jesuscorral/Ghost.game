@@ -1,7 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\50.Data\Ghost.Core\Ghost.Core.csproj" />
+    <ProjectReference Include="..\..\50.Data\Ghost.Data.Interface\Ghost.Data.Interface.csproj" />
+    <ProjectReference Include="..\Ghost.Service.Interface\Ghost.Service.Interface.csproj" />
+  </ItemGroup>
 
 </Project>

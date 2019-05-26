@@ -7,11 +7,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\30.Service\Ghost.Service.Interface\Ghost.Service.Interface.csproj" />
+    <ProjectReference Include="..\..\30.Service\Ghost.Service\Ghost.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
