@@ -3,16 +3,19 @@ using Ghost.Data.Interface;
 using Ghost.Service.Interface;
 using Ghost.Service.Interface.Request;
 using Ghost.Service.Interface.Response;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace Ghost.Service
 {
-    public class GhostService : IGhostService
+    public class GhostService : BaseService, IGhostService
     {
         private readonly IGhostRepository ghostRepository;
 
         public GhostService(
+            ILogger<GhostService> logger,
             IGhostRepository ghostRepository)
+            : base(logger)
         {
             this.ghostRepository = ghostRepository;
         }
@@ -24,7 +27,7 @@ namespace Ghost.Service
                 throw new NullRequestException<CheckWordRequest>();
             }
 
-            var t = this.ghostRepository.GetWords();
+            var t = await this.ghostRepository.GetWordsAsync();
 
             //var transaction = this.TransactionManager.CreateTransaction<ICheckWord>(t =>
             //{

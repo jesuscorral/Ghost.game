@@ -2,5 +2,6 @@
 {
     public class CheckWordRequest
     {
+        public string W { get; set; }
     }
 }

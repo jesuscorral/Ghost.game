@@ -6,7 +6,7 @@ namespace Ghost.Data.Interface
 {
     public interface IGhostRepository
     {
-        IEnumerable<Word> GetWords();
+        Task<IEnumerable<Word>> GetWordsAsync();
 
         Task<bool> SaveChangesAsync();
     }

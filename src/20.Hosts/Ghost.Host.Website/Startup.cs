@@ -1,5 +1,8 @@
 ﻿using Ghost.Data;
+using Ghost.Data.Interface;
 using Ghost.Host.Mvc.Configurations;
+using Ghost.Service;
+using Ghost.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -12,21 +15,27 @@ namespace Ghost.Host.Website
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Database context configuration. 
             var connectionString = Configuration.GetConnectionString("GhostDb");
             services.AddDbContext<GhostDataContext>(options =>
                 options.UseSqlServer(connectionString)
             );
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Binding service and repository interface to the respective classes
+            services.AddScoped<IGhostService, GhostService>();
+            services.AddScoped<IGhostRepository, GhostRepository>();
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(swagger =>

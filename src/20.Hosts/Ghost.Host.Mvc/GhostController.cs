@@ -1,5 +1,4 @@
-﻿using Ghost.Host.Mvc.Attributes;
-using Ghost.Service.Interface;
+﻿using Ghost.Service.Interface;
 using Ghost.Service.Interface.Request;
 using Ghost.Service.Interface.Response;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +22,7 @@ namespace Ghost.Host.Mvc
 
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(CheckWordResponse))]
-        [GhostRoute("checkWord")]
+        [Route("checkWord")]
         public async Task<IActionResult> CheckWord([FromBody] CheckWordRequest request)
         {
             return this.Json(await this.ghostService.CheckWordAsync(request));
