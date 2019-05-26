@@ -1,4 +1,5 @@
-﻿using Ghost.Data;
+﻿using AutoMapper;
+using Ghost.Data;
 using Ghost.Data.Interface;
 using Ghost.Host.Mvc.Configurations;
 using Ghost.Service;
@@ -36,6 +37,9 @@ namespace Ghost.Host.Website
             // Binding service and repository interface to the respective classes
             services.AddScoped<IGhostService, GhostService>();
             services.AddScoped<IGhostRepository, GhostRepository>();
+
+            // AutoMapper
+            services.AddAutoMapper();
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(swagger =>
