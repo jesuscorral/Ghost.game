@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99.SolutionItems", "99.Solu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10.Test", "10.Test", "{6CBF4769-C2D0-4110-94F0-270494EE576D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GhostHost.Mvc.Test", "src\10.Test\GhostHost.Mvc.Test\GhostHost.Mvc.Test.csproj", "{61FE0E5E-ECDE-4FD3-AE53-45E52C630155}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30.Service", "30.Service", "{7DAA990C-1A1F-4EAF-98A4-2B672A60ECFA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40.Business", "40.Business", "{94C4C4F5-9374-419A-AE47-0E5FD1BEB799}"
@@ -32,17 +30,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Service", "src\30.Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Service.Interface", "src\30.Service\Ghost.Service.Interface\Ghost.Service.Interface.csproj", "{D8E763AD-B932-4415-8EDC-F5ABD5FB3A00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghost.Data.Interface", "src\50.Data\Ghost.Data.Interface\Ghost.Data.Interface.csproj", "{94841AC3-C019-4010-AA00-1930D7B30606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Data.Interface", "src\50.Data\Ghost.Data.Interface\Ghost.Data.Interface.csproj", "{94841AC3-C019-4010-AA00-1930D7B30606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghost.Model", "src\60.Common\Ghost.Model\Ghost.Model.csproj", "{AC22C902-39D4-416E-9863-0CFD4366B3D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Model", "src\60.Common\Ghost.Model\Ghost.Model.csproj", "{AC22C902-39D4-416E-9863-0CFD4366B3D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghost.Business.Interface", "src\40.Business\Ghost.Business.Interface\Ghost.Business.Interface.csproj", "{4ABBB478-53EB-4054-9837-236EA3B6D75D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Business.Interface", "src\40.Business\Ghost.Business.Interface\Ghost.Business.Interface.csproj", "{4ABBB478-53EB-4054-9837-236EA3B6D75D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghost.Business", "src\40.Business\Ghost.Business\Ghost.Business.csproj", "{65FB31E1-2EAE-4595-BAA3-EADC3F8238A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Business", "src\40.Business\Ghost.Business\Ghost.Business.csproj", "{65FB31E1-2EAE-4595-BAA3-EADC3F8238A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghost.Core.Interface", "src\60.Common\Ghost.Core.Interface\Ghost.Core.Interface.csproj", "{2F8FDAD3-92E7-420A-B21A-E85848D9EC9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Core.Interface", "src\60.Common\Ghost.Core.Interface\Ghost.Core.Interface.csproj", "{2F8FDAD3-92E7-420A-B21A-E85848D9EC9F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Core", "src\60.Common\Ghost.Core\Ghost.Core.csproj", "{3B2ED875-0AF2-4F36-9B87-571DEC3D3C01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghost.Host.Mvc.Test", "src\10.Test\Ghost.Host.Mvc.Test\Ghost.Host.Mvc.Test.csproj", "{E21A99C0-1938-447E-9B8F-6276BC716601}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,10 +54,6 @@ Global
 		{7EDEE07F-9B7F-4B22-8544-DEDE6784F237}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EDEE07F-9B7F-4B22-8544-DEDE6784F237}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EDEE07F-9B7F-4B22-8544-DEDE6784F237}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61FE0E5E-ECDE-4FD3-AE53-45E52C630155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61FE0E5E-ECDE-4FD3-AE53-45E52C630155}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61FE0E5E-ECDE-4FD3-AE53-45E52C630155}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61FE0E5E-ECDE-4FD3-AE53-45E52C630155}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1BB5BEC9-1785-4907-96D9-89A24B5F3A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1BB5BEC9-1785-4907-96D9-89A24B5F3A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BB5BEC9-1785-4907-96D9-89A24B5F3A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -98,13 +94,16 @@ Global
 		{3B2ED875-0AF2-4F36-9B87-571DEC3D3C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B2ED875-0AF2-4F36-9B87-571DEC3D3C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B2ED875-0AF2-4F36-9B87-571DEC3D3C01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E21A99C0-1938-447E-9B8F-6276BC716601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E21A99C0-1938-447E-9B8F-6276BC716601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E21A99C0-1938-447E-9B8F-6276BC716601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E21A99C0-1938-447E-9B8F-6276BC716601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7EDEE07F-9B7F-4B22-8544-DEDE6784F237} = {57467603-6E8E-44C0-B19D-4B0CC133DF29}
-		{61FE0E5E-ECDE-4FD3-AE53-45E52C630155} = {6CBF4769-C2D0-4110-94F0-270494EE576D}
 		{1BB5BEC9-1785-4907-96D9-89A24B5F3A0A} = {C62025BD-F477-41DA-A8B9-35D2A0C4D2DE}
 		{C8C80688-5FEF-43C0-982B-AD2BF775C39C} = {57467603-6E8E-44C0-B19D-4B0CC133DF29}
 		{2E7F0AA6-F925-4D23-9FC1-D8707E32801F} = {7DAA990C-1A1F-4EAF-98A4-2B672A60ECFA}
@@ -115,6 +114,7 @@ Global
 		{65FB31E1-2EAE-4595-BAA3-EADC3F8238A4} = {94C4C4F5-9374-419A-AE47-0E5FD1BEB799}
 		{2F8FDAD3-92E7-420A-B21A-E85848D9EC9F} = {67F67E80-1A10-425E-9281-E20416FD6A3E}
 		{3B2ED875-0AF2-4F36-9B87-571DEC3D3C01} = {67F67E80-1A10-425E-9281-E20416FD6A3E}
+		{E21A99C0-1938-447E-9B8F-6276BC716601} = {6CBF4769-C2D0-4110-94F0-270494EE576D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEE866AE-7ECD-40B6-9165-2EA0CCEC904D}
