@@ -25,8 +25,8 @@ namespace Ghost.Host.Mvc
         [Route("checkWord")]
         public async Task<IActionResult> CheckWord([FromBody] CheckWordRequest request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState.GetErrorMessages());
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState.GetErrorMessages());
 
             return this.Json(await this.ghostService.CheckWordAsync(request));
         }

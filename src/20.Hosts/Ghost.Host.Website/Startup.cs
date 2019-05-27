@@ -28,6 +28,15 @@ namespace Ghost.Host.Website
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Enable ´CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCors", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Database context configuration. 
@@ -63,6 +72,9 @@ namespace Ghost.Host.Website
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // Use CORS
+            app.UseCors("EnableCors");
+
             // Use Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -84,6 +96,7 @@ namespace Ghost.Host.Website
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
         }
     }
 }
