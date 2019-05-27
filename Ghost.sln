@@ -44,6 +44,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ghost.Core", "src\60.Common
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghost.Host.Mvc.Test", "src\10.Test\Ghost.Host.Mvc.Test\Ghost.Host.Mvc.Test.csproj", "{E21A99C0-1938-447E-9B8F-6276BC716601}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ghost.Service.Test", "src\10.Test\Ghost.Service.Test\Ghost.Service.Test.csproj", "{5A363AC3-0300-4886-974F-14DB94FF0704}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,10 @@ Global
 		{E21A99C0-1938-447E-9B8F-6276BC716601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E21A99C0-1938-447E-9B8F-6276BC716601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E21A99C0-1938-447E-9B8F-6276BC716601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A363AC3-0300-4886-974F-14DB94FF0704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A363AC3-0300-4886-974F-14DB94FF0704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A363AC3-0300-4886-974F-14DB94FF0704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A363AC3-0300-4886-974F-14DB94FF0704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +121,7 @@ Global
 		{2F8FDAD3-92E7-420A-B21A-E85848D9EC9F} = {67F67E80-1A10-425E-9281-E20416FD6A3E}
 		{3B2ED875-0AF2-4F36-9B87-571DEC3D3C01} = {67F67E80-1A10-425E-9281-E20416FD6A3E}
 		{E21A99C0-1938-447E-9B8F-6276BC716601} = {6CBF4769-C2D0-4110-94F0-270494EE576D}
+		{5A363AC3-0300-4886-974F-14DB94FF0704} = {6CBF4769-C2D0-4110-94F0-270494EE576D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEE866AE-7ECD-40B6-9165-2EA0CCEC904D}

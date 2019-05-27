@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\30.Service\Ghost.Service.Interface\Ghost.Service.Interface.csproj" />
+    <ProjectReference Include="..\..\30.Service\Ghost.Service\Ghost.Service.csproj" />
+    <ProjectReference Include="..\..\40.Business\Ghost.Business\Ghost.Business.csproj" />
+    <ProjectReference Include="..\..\50.Data\Ghost.Data\Ghost.Data.csproj" />
+  </ItemGroup>
+
+</Project>

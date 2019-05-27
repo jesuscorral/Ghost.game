@@ -10,6 +10,6 @@ namespace Ghost.Service.Interface.Response
 
         public int Round { get; set; }
 
-        public string NextLetter { get; set; }
+        public string Word { get; set; }
     }
 }

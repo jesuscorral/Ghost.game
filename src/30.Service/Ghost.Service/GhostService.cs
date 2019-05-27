@@ -8,7 +8,6 @@ using Ghost.Service.Interface.Response;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using static Ghost.Service.Interface.Enums.Enum;
 
 namespace Ghost.Service
 {
