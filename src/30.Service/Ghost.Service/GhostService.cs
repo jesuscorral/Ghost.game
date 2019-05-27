@@ -43,7 +43,7 @@ namespace Ghost.Service
                 throw new TransactionNotFoundException(typeof(ICheckWord));
             }
 
-            transaction.StartingWord = GetStartingWord(request);
+            transaction.StartingWord = request.Word;
             transaction.Round = request.Round;
             transaction.Turn = request.Turn;
 
@@ -53,18 +53,6 @@ namespace Ghost.Service
             }
 
             return response;
-        }
-
-        /// <summary>
-        /// Return the starting word depending on who is playing in the current round
-        /// </summary>
-        /// <param name="request">Request with the value of the current word and the letter typed</param>
-        /// <returns>Starting word</returns>
-        private string GetStartingWord(CheckWordRequest request)
-        {
-            return request.Turn == Player.Computer ?
-                                    string.Concat(request.ComputedWord, request.LetterTyped) :
-                                    string.Concat(request.HumanWord, request.LetterTyped);
         }
     }
 }

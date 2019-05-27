@@ -1,34 +1,22 @@
 import { PlayerEnum } from '../enum/ghost.enum';
 
 export class GhostData {
-  private humanWord: string;
-  private computerWord: string;
+  private word: string;
   private turn: PlayerEnum;
-  private letterTyped: string;
   private round: number;
 
-  constructor(humanWord: string, computerWord: string, turn: PlayerEnum, letterTyped: string, round: number) {
-    this.humanWord = humanWord,
-    this.computerWord = computerWord;
+  constructor(word: string, turn: PlayerEnum, round: number) {
+    this.word = word;
     this.turn = turn;
-    this.letterTyped = letterTyped;
     this.round = round;
   }
 
-  get HumanWord(): string {
-    return this.humanWord;
+  get Word(): string {
+    return this.word;
   }
 
-  set HumanWord(humanWord: string) {
-    this.humanWord = humanWord;
-  }
-
-  get ComputerWord(): string {
-    return this.computerWord;
-  }
-
-  set ComputerWord(computerWord: string) {
-    this.computerWord = computerWord;
+  set Word(word: string) {
+    this.word = word;
   }
 
   get Turn(): PlayerEnum {
@@ -37,13 +25,6 @@ export class GhostData {
 
   set Turn(turn: PlayerEnum) {
     this.turn = turn;
-  }
-
-  get LetterTyped(): string {
-    return this.letterTyped;
-  }
-  set LetterTyped(letterTyped: string) {
-    this.letterTyped = letterTyped;
   }
 
   get Round(): number {

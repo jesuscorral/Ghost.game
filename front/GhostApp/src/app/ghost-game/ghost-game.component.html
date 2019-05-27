@@ -1,6 +1,23 @@
 <div class="container">
-  <label>
-    Email:
-    <input type="text">
+  <label> Word:
+    <input
+      type="text"
+      [disabled] = "writeLetterDisable || isLoadingResults"
+      class="form-control"
+      (keyup)="onSendLetter()"
+      [(ngModel)]="word">
   </label>
-</div>
+
+  <!-- <button class="btn-btn-primary"
+    [disabled] = "sendLetterButtonDisable"
+    (click)= "onSendLetter()">
+    Send Letter
+  </button> -->
+
+  <button class="btn-btn-primary"
+  [disabled] = "newRoundButtonDisable"
+  (click)= "onNewRound()">
+  New Round
+  </button>
+
+  </div>

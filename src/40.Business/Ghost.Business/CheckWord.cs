@@ -2,6 +2,7 @@
 using Ghost.Business.Interface.Dto;
 using Ghost.Data.Interface;
 using Ghost.Model.Ghost;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -43,13 +44,14 @@ namespace Ghost.Business
                 var winningWords = SelectWinningWords(words);
 
                 // If there are more than one word, choose on randomly.
-                this.Response.NextLetter = winningWords.FirstOrDefault().WordValue.Substring(Round, 1);
+                var nextLetter = winningWords.FirstOrDefault().WordValue.Substring(Round, 1);
+                Response.Word = String.Concat(StartingWord, nextLetter);
             }
 
             // Populate response
 
             // Increment the round
-            this.Response.Round += 1;
+            this.Response.Round = Round++;
 
             this.Response.Turn = this.Turn == Player.Human ? Player.Computer : Player.Human;
             

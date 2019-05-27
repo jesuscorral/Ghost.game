@@ -4,14 +4,12 @@ namespace Ghost.Business.Interface.Dto
 {
     public class CheckWordDto
     {
-        public string StartingWord { get; set; }
-
         public Player Winner { get; set; }
 
         public Player Turn { get; set; }
 
         public int Round { get; set; }
 
-        public string NextLetter { get; set; }
+        public string Word { get; set; }
     }
 }
