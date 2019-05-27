@@ -8,16 +8,11 @@
       [(ngModel)]="word">
   </label>
 
-  <!-- <button class="btn-btn-primary"
-    [disabled] = "sendLetterButtonDisable"
-    (click)= "onSendLetter()">
-    Send Letter
-  </button> -->
-
   <button class="btn-btn-primary"
   [disabled] = "newRoundButtonDisable"
   (click)= "onNewRound()">
   New Round
   </button>
 
+  <p> {{ winner }}</p>
   </div>

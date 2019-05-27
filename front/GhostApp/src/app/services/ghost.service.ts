@@ -17,21 +17,21 @@ export class GhostService {
    checkWord(request: GhostData): Observable<any> {
     let checkWord: CheckWordDto = null;
 
-    return this.http.put<any>(this.APIurl, request)
+    return this.http.post<any>(this.APIurl, request)
       .pipe(
         map(response => {
           checkWord = new CheckWordDto(response.Winner, response.Turn, response.Word, response.Round);
           return checkWord;
       }),
-      // catchError(this.handleError)
+      catchError(this.handleError)
       );
     }
 
-    // handleError(error: any) {
-    //   let errMsg = (error.message) ? error.message :
-    //     error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    //   console.error(errMsg);
-    //   return Observable.throw(errMsg);
-    // }
+    handleError(error: any) {
+      const errMsg = (error.message) ? error.message :
+        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+      console.error(errMsg);
+      return Observable.throw(errMsg);
+    }
 
   }

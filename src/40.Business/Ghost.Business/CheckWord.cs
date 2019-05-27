@@ -35,23 +35,27 @@ namespace Ghost.Business
 
             var words = await this.ghostRepository.GetWordsAsync(StartingWord);
 
+            // If human add a letter that produces a string that cannot be extended into a word, the human lose
             IsValidWord(words.Count());
 
-            // If the turn is corresponding to the human, the next turn will be for the computer.
-            if (this.Turn == Player.Human)
+            // If the turn is corresponding to the human, the next turn will be for the computer. It should be check if there are any winner at this point
+            if (this.Turn == Player.Human && this.Response.Winner == Player.None)
             {
                 // A list of winning words should be selected.
                 var winningWords = SelectWinningWords(words);
 
                 // If there are more than one word, choose on randomly.
-                var nextLetter = winningWords.FirstOrDefault().WordValue.Substring(Round, 1);
+
+
+                var random = new Random();
+                var selectedWord = winningWords.Skip(random.Next(0, winningWords.Count())).Take(1).FirstOrDefault();
+
+                var nextLetter = selectedWord.WordValue.Substring(Round, 1);
                 Response.Word = String.Concat(StartingWord, nextLetter);
             }
 
-            // Populate response
-
             // Increment the round
-            this.Response.Round = Round++;
+            this.Response.Round = ++Round;
 
             this.Response.Turn = this.Turn == Player.Human ? Player.Computer : Player.Human;
             
@@ -71,7 +75,6 @@ namespace Ghost.Business
     
         private void IsValidWord(int wordsCount)
         {
-            // If human add a letter that produces a string that cannot be extended into a word, the human lose
             if (wordsCount == 0 || wordsCount == 1)
             {
                 this.Response.Winner = this.Turn == Player.Human ? Player.Computer : Player.Human;

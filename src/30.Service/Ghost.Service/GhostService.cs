@@ -7,6 +7,7 @@ using Ghost.Service.Interface.Request;
 using Ghost.Service.Interface.Response;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Ghost.Service
@@ -33,6 +34,15 @@ namespace Ghost.Service
                 throw new NullRequestException<CheckWordRequest>();
             }
 
+            // The round is initialize with value = 1
+            if (request.Round != request.Word.Length)
+            {
+                throw new Exception("The word is bigger than the corresponding round");
+            }
+
+            // Check if the input are only letters
+            CheckInput(request.Word);
+            
             var response = new CheckWordResponse();
 
             var transaction = (ICheckWord)this.serviceProvider.GetService(typeof(ICheckWord));
@@ -52,6 +62,14 @@ namespace Ghost.Service
             }
 
             return response;
+        }
+
+        private void CheckInput(string word)
+        {
+            if(!Regex.IsMatch(word, @"^[a-zA-Z]+$"))
+            {
+                throw new Exception("The word is bigger than the corresponding round");
+            }
         }
     }
 }

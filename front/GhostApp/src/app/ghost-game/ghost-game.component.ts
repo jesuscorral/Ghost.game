@@ -14,6 +14,8 @@ export class GhostGameComponent implements OnInit {
   writeLetterDisable = true;
   newRoundButtonDisable = false;
   isLoadingResults = false;
+  winner = '';
+
   round = 1;
   turn = PlayerEnum.Human;
   word = '';
@@ -27,20 +29,32 @@ export class GhostGameComponent implements OnInit {
     this.writeLetterDisable = true;
     this.isLoadingResults = true;
     const g: GhostData = new GhostData(this.word, PlayerEnum.Human, this.round);
-    let checkWord: CheckWordDto = null;
+    let checkWordResponse: CheckWordDto = null;
 
     this.service.checkWord(g)
       .subscribe(data  => {
-        checkWord = data;
+        checkWordResponse = data;
         this.isLoadingResults = false;
       }, (error)  => {
       console.log('Error', error);
       }
     );
+
+    this.word = checkWordResponse.Word;
+
+    if (checkWordResponse.Winner !== PlayerEnum.None)
+    {
+      this.writeLetterDisable = true;
+      this.newRoundButtonDisable = true;
+      this.winner = checkWordResponse.Winner.toString();
+    }
+
+
   }
 
   onNewRound() {
    this.writeLetterDisable = false;
+   this.isLoadingResults = false;
    this.round = 1;
    this.turn = PlayerEnum.Human;
    this.word = '';
