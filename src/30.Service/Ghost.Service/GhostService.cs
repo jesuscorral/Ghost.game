@@ -68,7 +68,7 @@ namespace Ghost.Service
         {
             if(!Regex.IsMatch(word, @"^[a-zA-Z]+$"))
             {
-                throw new Exception("The word is bigger than the corresponding round");
+                throw new Exception("The word is bigger than the corresponding round.");
             }
         }
     }

@@ -3,6 +3,8 @@ import { GhostService } from '../services/ghost.service';
 import { PlayerEnum } from './enum/ghost.enum';
 import { GhostData } from './model/ghost.model';
 import { CheckWordDto } from './model/check-word-response.model';
+import { isUndefined } from 'util';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-ghost-game',
@@ -14,8 +16,8 @@ export class GhostGameComponent implements OnInit {
   writeLetterDisable = true;
   newRoundButtonDisable = false;
   isLoadingResults = false;
-  winner = '';
-
+  winner = PlayerEnum.None;
+  winnerMessage = '';
   round = 1;
   turn = PlayerEnum.Human;
   word = '';
@@ -23,32 +25,44 @@ export class GhostGameComponent implements OnInit {
   constructor(private service: GhostService) { }
 
   ngOnInit() {
+
   }
 
   onSendLetter() {
     this.writeLetterDisable = true;
     this.isLoadingResults = true;
     const g: GhostData = new GhostData(this.word, PlayerEnum.Human, this.round);
-    let checkWordResponse: CheckWordDto = null;
+    let checkWordResponse: any = null;
 
     this.service.checkWord(g)
       .subscribe(data  => {
         checkWordResponse = data;
-        this.isLoadingResults = false;
+
+        if (checkWordResponse != null) {
+          this.word = checkWordResponse.Word;
+          this.isLoadingResults = false;
+          this.writeLetterDisable = false;
+          this.round = checkWordResponse.round + 1;
+          if (checkWordResponse.Winner !== PlayerEnum.None) {
+            this.writeLetterDisable = true;
+            this.newRoundButtonDisable = false;
+            this.winnerMessage = 'The winner is:' + checkWordResponse.Winner.toString();
+          }
+        }
       }, (error)  => {
       console.log('Error', error);
       }
     );
 
-    this.word = checkWordResponse.Word;
+    if (checkWordResponse != null) {
+      this.word = checkWordResponse.Word;
 
-    if (checkWordResponse.Winner !== PlayerEnum.None)
-    {
-      this.writeLetterDisable = true;
-      this.newRoundButtonDisable = true;
-      this.winner = checkWordResponse.Winner.toString();
+      if (checkWordResponse.Winner !== PlayerEnum.None) {
+        this.writeLetterDisable = true;
+        this.newRoundButtonDisable = true;
+        this.winnerMessage = checkWordResponse.Winner.toString();
+      }
     }
-
 
   }
 
@@ -58,5 +72,6 @@ export class GhostGameComponent implements OnInit {
    this.round = 1;
    this.turn = PlayerEnum.Human;
    this.word = '';
+   this.winner = PlayerEnum.None;
   }
 }
