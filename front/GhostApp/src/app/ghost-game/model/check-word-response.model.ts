@@ -1,16 +1,16 @@
 import { PlayerEnum } from '../enum/ghost.enum';
 
 export class CheckWordDto {
-  private winner: PlayerEnum;
-  private turn: PlayerEnum;
-  private word: string;
-  private round: number;
+  public winner: PlayerEnum;
+  public turn: PlayerEnum;
+  public word: string;
+  public round: number;
 
-  constructor( winner: PlayerEnum, turn: PlayerEnum, word: string, round: number) {
-    this.winner = winner;
-    this.turn = turn;
-    this.word = word;
-    this.round = round;
+  constructor( playerWinner: PlayerEnum, playerTurn: PlayerEnum, wordWrite: string, roundNumber: number) {
+    this.winner = playerWinner;
+    this.turn = playerTurn;
+    this.word = wordWrite;
+    this.round = roundNumber;
   }
 
   get Winner(): PlayerEnum {

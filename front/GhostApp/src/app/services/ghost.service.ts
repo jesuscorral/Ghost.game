@@ -17,10 +17,10 @@ export class GhostService {
    checkWord(request: GhostData): Observable<any> {
     let checkWord: CheckWordDto = null;
 
-    return this.http.post<any>(this.APIurl, request)
+    return this.http.post<CheckWordDto>(this.APIurl, request)
       .pipe(
         map(response => {
-          checkWord = new CheckWordDto(response.Winner, response.Turn, response.Word, response.Round);
+          checkWord = new CheckWordDto(response.winner, response.turn, response.word, response.round);
           return checkWord;
       }),
       catchError(this.handleError)
