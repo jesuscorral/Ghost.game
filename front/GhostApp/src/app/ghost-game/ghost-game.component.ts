@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GhostService } from '../services/ghost.service';
 import { PlayerEnum } from './enum/ghost.enum';
 import { GhostData } from './model/ghost.model';
-import { CheckWordDto } from './model/check-word-response.model';
-import { isUndefined } from 'util';
-import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-ghost-game',
